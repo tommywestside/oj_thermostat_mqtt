@@ -11,6 +11,6 @@ services:
     environment:
       - TZ=America/New_York
     volumes:
-      - /data/thermostat_mqtt/config.yml:/data/config.yml:ro
+      - /data/thermostat_mqtt/config.yaml:/data/config.yaml:ro
     restart: unless-stopped
     user: root
