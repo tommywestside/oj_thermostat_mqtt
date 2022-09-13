@@ -23,7 +23,7 @@ serials = []
 sessionID = ""
 s = sched.scheduler(time.time, time.sleep)
 
-with open("secrets.yaml", "r") as stream:
+with open("/data/config.yaml", "r") as stream:
     try:
         secrets_yaml = yaml.safe_load(stream)
         username = secrets_yaml['username']

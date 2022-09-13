@@ -2,5 +2,5 @@
 .DS_Store
 
 # project
-secrets.yaml
+config.yaml
 test.py
