@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY requirements.txt .
 COPY import.py .
-COPY secrets.yaml .
 
 RUN pip install -r requirements.txt
 
