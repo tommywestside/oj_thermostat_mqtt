@@ -1,6 +1,6 @@
 requests
 yaml
-paho.mqtt.client as mqtt
+paho-mqtt
 time
 json
 sched
