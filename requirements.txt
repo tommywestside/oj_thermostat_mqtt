@@ -1,7 +1,3 @@
 requests
 PyYAML
 paho-mqtt
-time
-json
-sched
-datetime
