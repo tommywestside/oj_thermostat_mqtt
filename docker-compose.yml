@@ -1,0 +1,16 @@
+version: '3.7'
+services: 
+  water_usage_import:
+    image: 'thermostat_mqtt:latest'
+    container_name: 'thermostat_mqtt'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    privileged: true
+    network_mode: host
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - /data/thermostat_mqtt/config.yml:/data/config.yml:ro
+    restart: unless-stopped
+    user: root
