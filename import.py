@@ -105,10 +105,14 @@ def set_temperature(temperature, serial):
         data = payload,
         headers = {'Content-Type': 'application/json; charset=utf-8'}
     )
-    set_temp_return = result.json()
     print(f'HTTP - Result: {result.text}')
-    success = set_temp_return.get('Success')
-    return success
+    try:
+        set_temp_return = result.json()
+        success = set_temp_return.get('Success')
+        return success
+    except:
+        return ""
+    
 
 def connect_mqtt():
     client = mqtt.Client(clientName)
