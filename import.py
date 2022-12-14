@@ -84,10 +84,14 @@ def set_thermostat_auto(serial):
         data = payload,
         headers = {'Content-Type': 'application/json; charset=utf-8'}
     )
-    set_temp_return = result.json()
     print(f'HTTP - Result: {result.text}')
-    success = set_temp_return.get('Success')
-    return success
+    try:
+        set_temp_return = result.json()
+        success = set_temp_return.get('Success')
+        return success
+    except:
+        print("Error HTTP request set thermostat auto")
+        return -1
 
 def set_temperature(temperature, serial):
     print(f'THERMOSTAT - setting thermostat {serial} to {temperature}')
@@ -111,7 +115,7 @@ def set_temperature(temperature, serial):
         success = set_temp_return.get('Success')
         return success
     except:
-        return ""
+        return -1
     
 
 def connect_mqtt():
@@ -183,10 +187,14 @@ def login():
         data = login_payload,
         headers = dict(referer=BASE_URL + LOGIN_URL)
     )
-    login_return = result.json()
     print(f'HTTP - Result: {result.text}')
-    SESSION_ID = login_return.get('SessionId')
-    return SESSION_ID
+    try:
+        login_return = result.json()
+        SESSION_ID = login_return.get('SessionId')
+        return SESSION_ID
+    except:
+        print("Error with login HTTP request")
+        return -1
 
 def getNextScheduledTime(serial):
     day = datetime.datetime.today().weekday() + 1
